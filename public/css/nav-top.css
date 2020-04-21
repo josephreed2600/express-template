@@ -1,0 +1,77 @@
+/* Supports desktop */
+
+/* Assumes distance from viewport top to bottom of header line is 4.5em */
+
+@media all and (min-width: 60rem) {
+	main {
+		top: 7.5em; /* 4.5em + 3em */
+	}
+
+	body.right header#page-title,
+	body:not(.right) header#page-title {
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+
+	nav#main-nav {
+		position: fixed;
+		box-sizing: border-box;
+		overflow: hidden;
+		height: 3em;
+		width: 100%;
+		max-width: unset;
+		top: 4.5em;
+		bottom: unset;
+		left: 0;
+		right: 0;
+		transition: none;
+		user-select: none;
+	}
+	body.right nav#main-nav,
+	body.right nav#main-nav.open,
+	body.right nav#main-nav.closed,
+	body:not(.right) nav#main-nav,
+	body:not(.right) nav#main-nav.open,
+	body:not(.right) nav#main-nav.closed {
+		left: 0;
+		right: 0;
+		transition: none;
+	}
+
+	nav#main-nav > #nav-open-close, nav#main-nav > #nav-click-catcher {
+		display: none;
+	}
+
+	nav#main-nav > ul {
+		display: flex;
+		flex-direction: row;
+		height: 100%;
+		box-sizing: border-box;
+		overflow: hidden;
+		width: 100%;
+	}
+
+	nav#main-nav > ul > li {
+		display: block;
+		height: 100%;
+		width: unset;
+		box-sizing: border-box;
+		flex-grow: 1;
+	}
+
+	nav#main-nav > ul > li > a {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		height: 100%;
+		box-sizing: border-box;
+	}
+	body.right nav#main-nav > ul > li > a,
+	body.right nav#main-nav.open > ul > li > a,
+	body.right nav#main-nav.closed > ul > li > a,
+	body:not(.right) nav#main-nav > ul > li > a,
+	body:not(.right) nav#main-nav.open > ul > li > a,
+	body:not(.right) nav#main-nav.closed > ul > li > a {
+		text-align: center;
+	}
+}

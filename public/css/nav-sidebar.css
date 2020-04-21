@@ -1,0 +1,156 @@
+/* Supports mobile and desktop */
+
+nav#main-nav {
+	box-sizing: border-box;
+	/* position: absolute; */
+	position: fixed;
+	overflow-x: hidden;
+	width: 100%;
+	top: 4.5rem;
+	bottom: 0;
+	transition-property: left;
+	transition-duration: 0.35s;
+	user-select: none;
+}
+body.right nav#main-nav {
+	transition-property: right;
+}
+
+body:not(.right) nav#main-nav.closed {
+	left: -100%;
+}
+body.right nav#main-nav.closed {
+	right: -100%;
+}
+
+body:not(.right) nav#main-nav.open {
+	left: 0;
+}
+body.right nav#main-nav.open {
+	right: 0;
+}
+
+nav#main-nav > #nav-open-close {
+	/* height: 4.5rem; /* see also nav#main-nav > ul margin-top /
+	width: 100%;
+	box-sizing: border-box;
+	position: fixed;
+	left: 0;
+	top: 0;
+	border-bottom-width: 1px;
+	border-bottom-style: solid; */
+	width: 0;
+	height: 0;
+}
+
+/* Overall clickable hamborgar butan dims:
+ * width: 3.9rem;  // equal to left of header#page-title
+ * height: 4.5rem;
+ */
+nav#main-nav > #nav-open-close > #nav-btn-ctr {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 3.9rem;
+	padding: 1.5875rem 1rem; /* height should total 4.5rem to match nav#main-nav > #nav-open-close height */
+	box-sizing: border-box;
+	cursor: pointer;
+}
+body.right nav#main-nav > #nav-open-close > #nav-btn-ctr {
+	left: unset;
+	right: 0
+}
+
+/* Hamborgar dims:
+ * width:  1.9rem;
+ * height: 1.325rem;
+ */
+nav#main-nav > #nav-open-close > #nav-btn-ctr > .nav-btn-bar {
+	width: 1.5rem;
+	height: 0.175rem;
+	margin: 0.2rem;
+	transition-property: background-color, transform;
+	transition-duration: 0.35s;
+	border-radius: 0.0875rem;
+}
+
+nav#main-nav.open > #nav-open-close > #nav-btn-ctr > .nav-btn-bar {
+	height: 0.15rem;
+}
+
+nav#main-nav.open > #nav-open-close > #nav-btn-ctr > .nav-btn-bar.top {
+	transform: translateY(0.35rem) rotate(45deg);
+}
+nav#main-nav.open > #nav-open-close > #nav-btn-ctr > .nav-btn-bar.mid {
+	background-color: transparent !important;
+}
+nav#main-nav.open > #nav-open-close > #nav-btn-ctr > .nav-btn-bar.bot {
+	transform: translateY(-0.35rem) rotate(-45deg);
+}
+
+nav#main-nav > ul {
+	box-sizing: border-box;
+	overflow: hidden;
+	width: 100%;
+}
+
+nav#main-nav > ul > li {
+	width: 100%;
+	box-sizing: border-box;
+}
+
+nav#main-nav > ul > li > a {
+	width: 100%;
+	padding: 0.75rem;
+	text-align: right;
+	box-sizing: border-box;
+	display: block;
+}
+body.right nav#main-nav > ul > li > a {
+	text-align: left;
+}
+
+nav#main-nav > ul > li > a:hover {
+}
+
+nav#main-nav > #nav-click-catcher {
+	position: fixed;
+	top: 4.5rem;
+	bottom: 0;
+	left: 20rem;
+	right: 0;
+}
+body.right nav#main-nav > #nav-click-catcher {
+	left: 0;
+	right: 20rem;
+}
+
+nav#main-nav.closed > #nav-click-catcher {
+	display: none;
+}
+
+header#page-title {
+	/* top just lines it up nicely with burger */
+	padding-top: 1.4em;
+	padding-left: 3.9rem;
+	padding-right: 1rem;
+	/* height should equal top of nav#main-nav */
+	height: 4.5em;
+	box-sizing: border-box;
+	white-space: nowrap;
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	border-bottom: 1px solid;
+}
+body.right header#page-title {
+	padding-left: 1rem;
+	padding-right: 3.9rem;
+}
+
+@media all and (min-width: 20rem) {
+	nav#main-nav {
+		max-width: 20rem;
+	}
+}

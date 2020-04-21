@@ -1,0 +1,14 @@
+extends root.pug
+
+block nav
+    nav(id="main-nav" class="closed")
+        div(id="nav-open-close")
+            div(id="nav-btn-ctr")
+                div(class="nav-btn-bar top")
+                div(class="nav-btn-bar mid")
+                div(class="nav-btn-bar bot")
+        ul(class="plain")
+            each path, displayName in navlist
+                li(class="plain")
+                    a(href=path, class="plain") #{displayName}
+        div(id="nav-click-catcher")
