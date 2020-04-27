@@ -31,9 +31,11 @@ app.use(bodyParser.json());
 logger.info('Configured Express.');
 
 logger.info('Configuring routes...');
-const routes = require('./routes/master');
-app.get('/', routes.index);
-//app.get('/wiki/:name', routes.wiki);
+let routeFiles = ['master'];
+routeFiles.forEach((file) => {
+	logger.info(`Adding ${file} routes...`);
+	require(`./routes/${file}`).apply(app);
+});
 logger.info('Configured routes.');
 
 logger.info(`Listening on port ${process.env.PORT}`);

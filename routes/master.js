@@ -1,15 +1,38 @@
-const nav = require('./nav.json');
+const logger = require(process.env.FEW_LIBS?'../logger':'logger').get('master');
+const { makeSearchable } = require('../util');
 
-// req.params holds things passed in by request
+
+let nav = makeSearchable(require('./nav.json'), 'pages');
+//let catalog = makeSearchable(require('../db/catalog.json'), 'products');
+
 
 const index = (req, res) => {
+	let page_details = nav.get('index');
 	res.render('index', {
-		title: 'Home: The really really really really really really really really really really really really really long page title for testing purposes',
-		link: `/`,
-		navlist: nav
+		navlist: nav.pages,
+		title: page_details.page_name,
+		slug: page_details.page_id,
 	});
 };
 
-module.exports = {
-	index
+
+const routes = [
+	{
+		uri: '/',
+		methods: ['get'],
+		handler: index
+	}
+]
+
+
+const apply = (app) => {
+	routes.forEach((route) => {
+		route.methods.forEach((method) => {
+			app[method](route.uri, route.handler);
+			logger.info(`Adding route: ${method.toLocaleUpperCase()} ${route.uri}`);
+		});
+	});
 };
+
+
+module.exports = { apply };
