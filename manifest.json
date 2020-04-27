@@ -1,8 +1,8 @@
 {
-    "short_name": "Transition",
-    "name": "Transition Organizer",
+    "short_name": "",
+    "name": "",
     "icons": [],
-    "start_url": "/dashboard.html",
+    "start_url": "/",
     "display": "standalone",
     "orientation": "portrait"
 }
