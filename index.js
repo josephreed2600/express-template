@@ -15,18 +15,23 @@ const logger = require(process.env.FEW_LIBS?'./logger':'logger').get('main');
 
 logger.info('Requiring packages...');
 const express = require('express');
-const routes = require('./routes/master');
 const path = require('path');
-const app = express();
+const bodyParser = require('body-parser');
 logger.info('Required packages.');
 
 logger.info('Configuring Express...');
+const app = express();
 app.set('view engine', 'pug');
 app.set('views', __dirname + '/views');
 app.use(express.static(path.join(__dirname + '/public')));
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+// parse application/json
+app.use(bodyParser.json());
 logger.info('Configured Express.');
 
 logger.info('Configuring routes...');
+const routes = require('./routes/master');
 app.get('/', routes.index);
 //app.get('/wiki/:name', routes.wiki);
 logger.info('Configured routes.');
