@@ -9,7 +9,7 @@ console.log(`Starting ${package.name} v${package.version}`);
 if(process.env.FEW_LIBS) {
 	process.env.PORT = 3000;
 } else {
-	require('dotenv').configure();
+	require('dotenv').config();
 }
 const logger = require(process.env.FEW_LIBS?'./logger':'logger').get('main');
 

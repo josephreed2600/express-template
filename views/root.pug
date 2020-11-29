@@ -1,23 +1,32 @@
+mixin css(name)
+	link(href="/css/"+name+".css", rel="stylesheet", type="text/css")
+
+mixin js(name)
+	script(src="/js/"+name+".js")
+
 <!DOCTYPE html>
-//- fix id to be id-like always (consider titles with spaces, etc.)
-html(lang="en", id=title)
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        meta(id="mobile-address-bar-color", name="theme-color", content="")
-        title #{title}
+html(lang="en", id=slug)
+	head
+		meta(charset="UTF-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		meta(id="mobile-address-bar-color", name="theme-color", content="")
+		meta(name="apple-mobile-web-app-capable", content="yes")
+		meta(name="mobile-web-app-capable", content="yes")
+		link(href="/manifest.json", rel="manifest")
+		title #{title}
 
-        block links
-            link(href="/css/site.css", rel="stylesheet", type="text/css")
-            link(href="/css/elements.css", rel="stylesheet", type="text/css")
+		block links
+			+css("site")
+			+css("elements")
 
-        block scripts
-            script(src="/js/util.js")
-            script(src="/js/theme.js")
+		block scripts
+			+js("util")
+			+js("localStorage")
+			+js("theme")
 
-    body(class="right")
-        main
-            header(id="page-title")
-                h1 #{title}
-            block content
-        block nav
+	body(class="right")
+		main
+			header(id="page-title")
+				h1 #{title}
+			block content
+		block nav

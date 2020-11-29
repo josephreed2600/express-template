@@ -1,7 +1,7 @@
-extends layout-with-nav.pug
+extends layout-with-nav-markup
 
 append links
-	link(href="/css/nav-sidebar.css", rel="stylesheet", type="text/css")
+	+css("nav-sidebar")
 
 append scripts
-	script(src="/js/nav-sidebar-interact.js")
+	+js("nav-sidebar-interact")

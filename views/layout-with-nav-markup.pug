@@ -1,0 +1,15 @@
+extends root
+
+block nav
+	nav(id="main-nav" class="closed")
+		div(id="nav-open-close")
+			div(id="nav-btn-ctr")
+				div(class="nav-btn-bar top")
+				div(class="nav-btn-bar mid")
+				div(class="nav-btn-bar bot")
+		ul(class="plain")
+			each page in navlist
+				if page.nav_name
+					li(class="plain")
+						a(href=page.page_path, class="plain") #{page.nav_name}
+		div(id="nav-click-catcher")

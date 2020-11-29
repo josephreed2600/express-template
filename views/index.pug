@@ -1,7 +1,7 @@
-extends layout-with-nav-top
+extends layout-with-nav-sidebar
 
 append links
-	link(href="css/index.css", rel="stylesheet", type="text/css")
+	+css("index")
 
 block content
 	p foo
